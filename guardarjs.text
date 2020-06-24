@@ -1,0 +1,253 @@
+//get elemento id
+let encabezdo;
+encabezdo=document.getElementById("encabezado");
+encabezdo.style.background='#333';
+encabezdo.style.color="#fff"
+encabezdo.style.padding="20px"
+encabezdo.textContent="los mejores cursos" 
+
+console.log(encabezdo.className);
+///querySlecetor
+const encabezad=document.querySelector('.card img');
+let enlace;
+enlace=document.querySelector("#principal a:first-child");
+enlace=document.querySelector('#principal a:nth-child(3)');
+//querySelector&&getElementBy
+const listaEnlace =document.querySelector("#principal").getElementsByClassName("enlace");
+//getElementsByTagName
+const links =document.getElementsByTagName("a");
+
+links[18].style.color="red";
+links[18].textContent="nuervo enlaces"
+let enlaces=Array.from(links);
+
+enlaces.forEach(function(enlaces){
+    console.log(enlaces.textContent);
+});
+///query selector y ForEach
+const enlaces =document.querySelectorAll("#principal a:nth-child(odd)");
+let contador=1;
+enlaces.forEach(function(impa){
+    impa.style.background="red";
+    impa.style.color="white";
+    console.log(impa);
+    
+    console.log(contador);
+    contador++;
+});
+const array1 = ['a', 'b', 'c'];
+
+array1.forEach(function(impa){
+    console.log(contador);
+    contador++;
+}
+);
+const navegacion=document.querySelector(".barra");
+
+
+
+console.log(navegacion.children[0].children[0]);
+//1- elemtos 
+//2-atributos  
+//3- textnode
+//8- comentarios 
+//9- documentos
+//10- doctype 
+const navegacion=document.querySelectorAll(".card");
+
+
+
+console.log(navegacion[0].childElementCount);
+/*numero de elementos*/
+const navegacion=document.querySelectorAll(".card");
+
+
+
+console.log(navegacion[0].lastElementChild);
+//ultimo elemento
+
+console.log(enlaces[0].parentElement);
+////regresar a la clase padre
+
+const enlaces =document.querySelectorAll(".card");
+
+
+console.log(enlaces[0].parentElement.parentElement.parentElement.children[0].textContent="hola mundo");
+//de una clase selecciono una clase superior
+
+const enlaces =document.querySelectorAll(".enlace");
+
+
+console.log(enlaces[0].nextElementSibling)
+///para moverse entre los elementos de una misma clase
+
+
+///crear enlace
+const enlace=document.createElement("a");
+
+//agregar a una clase
+
+enlace.className="enlace";
+//añadir un id
+
+enlace.id="nuevo-id";
+enlace.setAttribute("href", "#");
+enlace.textContent="nuevo enlace"
+//agregarlo al html
+document.querySelector("#secundaria").appendChild(enlace);
+console.log(enlace);
+
+
+///remplazar elementos
+const numervoEncabezado = document.createElement("h2");
+numervoEncabezado.id="encabezado";
+numervoEncabezado.className="encabezado"
+//agregar nuevo texto
+numervoEncabezado.appendChild(document.createTextNode("loss mejores cursos"));
+//elemento anterior (seraremplzado)
+const anterior=document.querySelector("#encabezado")
+console.log(anterior)
+//elemento padre
+const elPadre= document.querySelector("#lista-cursos");
+//remplazar
+elPadre.replaceChild(numervoEncabezado, anterior);
+
+
+numervoEncabezado.style.textAlign="center"
+console.log(anterior);
+
+
+//para eliminar elemento
+const enlace= document.querySelectorAll(".enlace");
+const navegacion=document.querySelector("#principal");
+
+enlace[0].remove();
+navegacion.removeChild(enlace[0]);
+
+
+
+const primerLi =document.querySelector(".enlace");
+
+let elemnto;
+
+//obtener una clase del CSS
+elemnto=primerLi.className;
+elemnto=primerLi.classList.add("nueva-clase");
+elemnto=primerLi.classList.remove("nueva-clase");
+elemnto=primerLi.classList;
+
+//leer atributos
+
+primerLi.setAttribute("href","www.youtube.com");
+primerLi.setAttribute("data-id",20);
+
+elemnto=primerLi.removeAttribute("data-id");
+elemnto=primerLi.hasAttribute("data-id");
+
+console.log(elemnto);
+
+
+//botones evento
+document.querySelector(".submit-buscador").addEventListener("click",ejecutarBoton);
+
+function ejecutarBoton(evt){
+    evt.preventDefault();
+    //console.log("desde la funcion ejecutar Boton");
+    let elemento=evt;
+    elemento=evt.target.id;
+    elemento=evt.target.className;
+    elemento=evt.target.innerText;
+
+    console.log(elemento);
+}
+///mas eventos de mouse
+const encabezado=document.querySelector("#encabezado");
+const enlaces = document.querySelectorAll(".enlace");
+const boton =document.querySelector("#vaciar-carrito");
+
+//click
+//doble click
+///boton.addEventListener("dblclick",obtenerEcento);
+//mouse enter
+//boton.addEventListener("mouseenter",obtenerEcento);
+//mouseleave
+//boton.addEventListener("mouseleave",obtenerEcento);
+//mouse over
+//boton.addEventListener("mouseover",obtenerEcento);
+//mouse out
+//boton.addEventListener("mouseout",obtenerEcento);
+//mouse down
+//boton.addEventListener("mousedown",obtenerEcento);
+//mouse move    
+encabezado.addEventListener("mousemove",obtenerEcento);
+function obtenerEcento(e){
+    console.log("Evento: "+e.type );
+    
+}
+
+
+//evento para texto
+const busqued = document.querySelector("#buscador");
+//busqued.addEventListener("keydown",obtenerEvento);
+//busqued.addEventListener("keyup",obtenerEvento);
+//busqued.addEventListener("keypress",obtenerEvento);
+//busqued.addEventListener("focus",obtenerEvento);
+//busqued.addEventListener("blur",obtenerEvento);
+//busqued.addEventListener("cut",obtenerEvento);
+//busqued.addEventListener("copy",obtenerEvento);
+//busqued.addEventListener("paste",obtenerEvento);
+//busqued.addEventListener("input",obtenerEvento);
+//busqued.addEventListener("change",obtenerEvento);
+
+function obtenerEvento(e){
+    
+    console.log("evento "+e.type);
+    console.log(busqued.value);
+}
+
+console.log(busqued);
+
+//event bubbling
+
+const cad=document.querySelector(".card");
+const infoCurso=document.querySelector(".info-card");
+const  agregarCarrito=document.querySelector(".agregar-carrito");
+
+cad.addEventListener("click",function(e){
+    console.log("click en card")
+    e.stopPropagation();
+});
+
+infoCurso.addEventListener("click",function(e){
+    console.log("click en informacion carrito");
+    e.stopPropagation();
+});
+
+agregarCarrito.addEventListener("click",function(e){
+    console.log("click en agregar carrito");
+    e.stopPropagation();
+});
+
+
+///delegation
+
+document.body.addEventListener("click",eliminarElemento);
+
+function eliminarElemento(e){
+    e.preventDefault();
+    
+
+    if(e.target.classList.contains("borrar-curso")){
+        console.log(e.target.parentElement.parentElement.remove());
+    }
+    if(e.target.classList.contains("agregar-carrito")){
+        console.log("curso agregado");
+    }
+}
+
+//agregar local stora
+ localStorage.setItem("nombre", "jonathan");
+ //sesion sotra agregar
+ sessionStorage.setItem("nombre","jonasn");
+ ///borrar localStorage
+ localStorage.removeItem("nombre","jonathan");
