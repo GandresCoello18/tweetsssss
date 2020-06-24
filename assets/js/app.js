@@ -46,10 +46,9 @@ function borrarTweet(e){
     e.preventDefault();
     
     if (e.target.className === "borrar-tweet") {
-        borrarTweetLocalStorange(e.target.parentElement.innerText); 
+        console.log(e.target.parentElement.innerText)
+        borrarTweetLocalStorange(e.target.parentElement.textContent); 
         e.target.parentElement.remove();
-       
-        
     }
 }
 
@@ -104,25 +103,32 @@ function obtenerTweet(){
 
 //eliminar tweet de local storange
 function borrarTweetLocalStorange(tweet){
-    let tweets;
-    let tweetborrar;
+    console.log(tweet);
     
     //elimina la X del tweet
-    tweetborrar=tweet.substring(0,tweet.length-1);
+    let tweetborrar = tweet.substring(0,tweet.length-1);
 
-    tweets=obtenerTweet();
-    //console.log(tweetborrar);
-    console.log(tweetborrar)
-    console.log(tweets);
+    let = tweets=obtenerTweet();
+
+    console.log(tweetborrar == tweets[0]);
     
-    for(let I=0; tweets.legth; I++){ 
-        if(tweets[I] == tweetborrar){
-            console.log("mis");
-            tweets.splice(0, tweets[I]);
+    for(let i=0; i < tweets.length; i++){ 
+        if(tweets[i] == tweetborrar){
+            tweets[i] = undefined;
+            //tweets.splice(0, i);
         }
+    }
+
+    let array = [];
+    for(let j=0; j < tweets.length; j++){
+        if(tweets[j] != undefined){
+            array.push(tweets[j]);
         }
-    
-    localStorage.setItem("tweeets", JSON.stringify(tweets));
+    }
+
+    console.log(array);
+
+    localStorage.setItem("tweeets", JSON.stringify(array));
 }
 
 
